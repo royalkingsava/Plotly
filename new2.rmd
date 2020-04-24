@@ -1,0 +1,28 @@
+---
+title: "Plotly"
+author: "Savita Nandan"
+date: "24/04/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+***
+
+```{r echo=FALSE, fig.align='center', fig.cap='Price of Diamonds by Carat Value', cache=FALSE, results=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(plotly)
+data <- diamonds[sample(nrow(diamonds), 2000,),]
+g <- ggplot(data = data, aes(x = carat, y = price, color=cut)) +
+  geom_smooth(alpha=.1, size=1) +
+  labs(x="Carat", y="Price (USD)")
+ggplotly(g)
+```
+
+## Summary
+
+- sample from **diamonds** data from in ggplot2 used for analysis
+- diamond price increases with carat value for any kinds of cut (except for Fair cut for which price stabilises after certain carat value)
+- explore the data with cool features of **plotly**
